@@ -72,6 +72,10 @@ Reproduce the bug in a failing test first. Then fix. The test stays.
 
 Delete it. Write the test, see it fail, rewrite the logic. Do not copy the old version back.
 
+## Spikes
+
+Only when the user asks for a spike, prototype, or throwaway code: write it without tests to learn fast. Label it **untested spike** in the report. Before it counts as done, delete it and rebuild test-first.
+
 ## Always
 
 - **Never bend tests to pass.** No weakened assertions, skips, or deletions. If a test is wrong, fix it and say so.
@@ -89,6 +93,8 @@ Run the full suite, plus linter and type checker if the project has them. Then:
 2. **Tests added**: names, each confirmed failing first.
 3. **Checks run**: exact commands and results.
 4. **Not checked**: what and why (device, credentials, network, pre-existing failures).
+
+No logic changed? One line: *"No logic changed. Ran `<command>`: OK."*
 
 Never claim tests pass without running them in this session.
 
