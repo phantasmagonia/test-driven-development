@@ -74,10 +74,14 @@ Guides load only when a project needs them, so they cost no context otherwise.
 ## Files
 
 ```text
-.claude-plugin/   plugin and marketplace manifests
+.claude-plugin/   plugin and marketplace manifests, icon
 skills/           the workflow (SKILL.md) and its guides
 hooks/            the edit gate
 ```
+
+## Privacy
+
+Collects nothing, sends nothing. See [PRIVACY.md](PRIVACY.md).
 
 ## License
 
