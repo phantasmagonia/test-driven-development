@@ -21,7 +21,7 @@ Every code change follows this cycle. Repeat steps 3-5 per behavior.
 - Find the stack and test command (manifest, CI config, Makefile, README). Load the matching `references/stacks/` file, or `other.md`.
 - Run the suite once. Note tests that already fail; do not hide or silently fix them.
 - Learn to run a single test.
-- No test runner? Add the standard one for the stack first, with one passing test.
+- No test runner? Choose the smallest practical way to run a focused test, and report what remains unverified.
 - Changing untested code? Read `references/legacy-code.md` first.
 
 ## 2. Triage: the Logic Gate
@@ -70,7 +70,7 @@ Reproduce the bug in a failing test first. Then fix. The test stays.
 
 ## Logic written before its test
 
-Delete it. Write the test, see it fail, rewrite the logic. Do not copy the old version back.
+Write a test that fails against the current behavior before proceeding. Then make the smallest change that passes it and report the sequence honestly.
 
 ## Spikes
 
@@ -103,7 +103,7 @@ Never claim tests pass without running them in this session.
 | Excuse | Answer |
 |---|---|
 | "Tests after." | They pass on first run and prove nothing. |
-| "Too simple." | Then the test is quick. No logic? The gate already skips it. |
+| "Too simple." | Then the test is quick. No logic? No test is needed. |
 | "Tested by hand." | Not repeatable. |
 | "Hard to test." | Too many dependencies. Add a seam. |
 | "Just a refactor." | Needs green tests first. None? Characterize first. |

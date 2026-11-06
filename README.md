@@ -2,7 +2,7 @@
 
 **No logic without a failing test first.**
 
-A Claude Code skill plugin that guides test-first work in any language. Every change starts with a failing test, ends with a passing one, and closes with a report of exactly what was checked.
+A Claude Code skill plugin that guides test-first work in any language: start behavior changes with a failing test, finish with passing checks, and report exactly what ran.
 
 ## Why
 
@@ -29,7 +29,7 @@ Restart Claude Code. The directory-listed plugin contains only instructions and 
 
 To try it locally: `claude --plugin-dir /path/to/this/repo/plugins/test-driven-development`
 
-### Optional edit gate
+### Install the optional edit-tool gate
 
 For the session reminder and edit gate, also install the separate `tdd-gate` plugin from this repository's marketplace:
 
@@ -37,7 +37,7 @@ For the session reminder and edit gate, also install the separate `tdd-gate` plu
 /plugin install tdd-gate@test-driven-development
 ```
 
-The gate requires `python3` (3.9+) and is not part of the directory listing. To try both plugins locally, pass both plugin directories to `claude --plugin-dir`.
+The gate requires the skill plugin and `python3` (3.9+). It is not part of the directory listing. To try both plugins locally, pass both plugin directories to `claude --plugin-dir`.
 
 ## Use
 
@@ -60,13 +60,23 @@ Checks run:  python3 -m unittest -> 5 tests, OK.
 Not checked: nothing outstanding.
 ```
 
+## Adopt the workflow without hooks
+
+Claude Code can invoke the installed skill when a coding task matches its description. For a standing preference, add this to a project's `CLAUDE.md` (shared with the team) or to `~/.claude/CLAUDE.md` (personal, across projects):
+
+```md
+When changing code, load the test-driven-development skill before editing.
+Write a focused failing test for each behavior change, make it pass, then run
+the relevant suite. Report the commands actually run and their results.
+```
+
+This repository has its own `CLAUDE.md` for contributors. It applies when Claude works in this repository; installing the plugin does not copy it into other projects. Instructions guide Claude's behavior but do not enforce edits.
+
 ## Optional edit gate
 
-The separate `tdd-gate` plugin adds enforcement for Claude Code edit tools.
+The separate `tdd-gate` plugin reminds Claude to load the skill and checks Claude Code Edit, Write, and MultiEdit calls.
 
-With `tdd-gate` installed, every session starts with a reminder to load the workflow. Then a hook runs before every file edit. If the file is source code and the workflow is not active, the edit is blocked and Claude is told to load it. Docs and config are never blocked. If the hook cannot read its input, it allows the edit instead of locking the session.
-
-In a real session, Claude went straight for the code. The gate stopped it, Claude loaded the workflow, wrote two tests, saw both fail, then fixed the code.
+With `tdd-gate` installed, every session starts with a reminder to load the workflow. Then a hook runs before Edit, Write, and MultiEdit calls. If the file is source code and the skill has not been invoked in the session, the edit is blocked and Claude is told to load it. Docs and config are never blocked. If the hook cannot read its input, it allows the edit instead of locking the session.
 
 With the gate installed, turn it off for one session: `TDD_GATE=off claude`
 

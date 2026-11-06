@@ -45,7 +45,9 @@ def decide(event: Mapping, env: Mapping[str, str]) -> Optional[str]:
         return None
     if event.get("tool_name") not in EDIT_TOOLS:
         return None
-    tool_input = event.get("tool_input") or {}
+    tool_input = event.get("tool_input")
+    if not isinstance(tool_input, Mapping):
+        return None
     if not is_source_file(str(tool_input.get("file_path", ""))):
         return None
     try:
@@ -64,6 +66,9 @@ def run(stdin: TextIO, stderr: TextIO, env: Mapping[str, str]) -> int:
         return 0
     if not isinstance(event, dict):
         stderr.write("tdd_gate: hook input is not a JSON object, allowing the edit\n")
+        return 0
+    if event.get("tool_name") in EDIT_TOOLS and not isinstance(event.get("tool_input"), dict):
+        stderr.write("tdd_gate: hook tool_input is not a JSON object, allowing the edit\n")
         return 0
     reason = decide(event, env)
     if reason is None:
