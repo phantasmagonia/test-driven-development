@@ -1,8 +1,28 @@
-# Generated
-__pycache__/
-*.pyc
+# Keep the directory submission free of executable and development files.
+/*
+!/.gitignore
+!/LICENSE
+!/PRIVACY.md
+!/README.md
+!/.claude-plugin/
+!/skills/
+/.claude-plugin/*
+!/.claude-plugin/plugin.json
+!/.claude-plugin/icon.png
+**/*.py
+**/*.pyc
+**/__pycache__/
+**/*.sh
+**/*.bash
+**/*.zsh
+**/*.ps1
+**/*.js
+**/*.ts
+**/*.go
+**/*.swift
+**/*.cpp
+**/*.c
+**/*.h
 .DS_Store
-
-# Local secrets and settings
 .env
 .env.*
