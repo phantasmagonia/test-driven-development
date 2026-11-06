@@ -29,6 +29,10 @@ Restart Claude Code. The directory-listed plugin contains only instructions and 
 
 To try it locally: `claude --plugin-dir /path/to/this/repo/plugins/test-driven-development`
 
+### Directory submission
+
+Submit `plugins/test-driven-development` as the plugin path, not the repository root. The directory draft has **Auto-publish passing versions** enabled; keep that setting on when editing or resubmitting the listing. This is a developer portal setting, not a repository configuration. The optional `tdd-gate` plugin is outside the submitted path.
+
 ### Install the optional edit-tool gate
 
 For the session reminder and edit gate, also install the separate `tdd-gate` plugin from this repository's marketplace:
