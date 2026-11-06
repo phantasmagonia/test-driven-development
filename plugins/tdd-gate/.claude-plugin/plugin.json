@@ -1,0 +1,19 @@
+{
+  "name": "tdd-gate",
+  "version": "0.1.3",
+  "description": "Optional edit gate and session reminder for the test-driven-development skill.",
+  "author": {
+    "name": "phantasmagonia"
+  },
+  "license": "MIT",
+  "keywords": [
+    "tdd",
+    "testing",
+    "hooks"
+  ],
+  "homepage": "https://github.com/phantasmagonia/test-driven-development",
+  "repository": "https://github.com/phantasmagonia/test-driven-development",
+  "documentationUrl": "https://github.com/phantasmagonia/test-driven-development#optional-edit-gate",
+  "supportUrl": "https://github.com/phantasmagonia/test-driven-development/issues",
+  "privacyPolicyUrl": "https://github.com/phantasmagonia/test-driven-development/blob/main/PRIVACY.md"
+}

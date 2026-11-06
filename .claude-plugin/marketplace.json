@@ -8,8 +8,8 @@
   "plugins": [
     {
       "name": "test-driven-development",
-      "source": "./",
-      "description": "A strict test-first workflow for Claude Code, with a gate that makes sure it is used before any source code changes.",
+      "source": "./plugins/test-driven-development",
+      "description": "A strict test-first workflow for Claude Code, with no hooks or code execution.",
       "version": "0.1.3",
       "license": "MIT",
       "category": "development",
@@ -17,6 +17,19 @@
         "tdd",
         "testing",
         "refactoring"
+      ]
+    },
+    {
+      "name": "tdd-gate",
+      "source": "./plugins/tdd-gate",
+      "description": "Optional command hooks that remind Claude to load the TDD skill and gate source edits.",
+      "version": "0.1.3",
+      "license": "MIT",
+      "category": "development",
+      "keywords": [
+        "tdd",
+        "testing",
+        "hooks"
       ]
     }
   ]

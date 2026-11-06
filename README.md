@@ -2,7 +2,7 @@
 
 **No logic without a failing test first.**
 
-A Claude Code plugin that makes Claude work test-first in any language. Every change starts with a failing test, ends with a passing one, and closes with a report of exactly what was checked.
+A Claude Code skill plugin that guides test-first work in any language. Every change starts with a failing test, ends with a passing one, and closes with a report of exactly what was checked.
 
 ## Why
 
@@ -25,9 +25,19 @@ In Claude Code:
 /plugin install test-driven-development@test-driven-development
 ```
 
-Restart Claude Code. Done. Requires `python3` (3.9+) for the edit gate.
+Restart Claude Code. The directory-listed plugin contains only instructions and runs no hooks.
 
-To try without installing: `claude --plugin-dir /path/to/this/repo`
+To try it locally: `claude --plugin-dir /path/to/this/repo/plugins/test-driven-development`
+
+### Optional edit gate
+
+For the session reminder and edit gate, also install the separate `tdd-gate` plugin from this repository's marketplace:
+
+```text
+/plugin install tdd-gate@test-driven-development
+```
+
+The gate requires `python3` (3.9+) and is not part of the directory listing. To try both plugins locally, pass both plugin directories to `claude --plugin-dir`.
 
 ## Use
 
@@ -50,15 +60,15 @@ Checks run:  python3 -m unittest -> 5 tests, OK.
 Not checked: nothing outstanding.
 ```
 
-## It gets used, every time
+## Optional edit gate
 
-Claude may skip a skill. This plugin does not allow that for code.
+The separate `tdd-gate` plugin adds enforcement for Claude Code edit tools.
 
-Every session starts with a reminder to load the workflow. Then a hook runs before every file edit. If the file is source code and the workflow is not active, the edit is blocked and Claude is told to load it. Docs and config are never blocked. If the hook cannot read its input, it allows the edit instead of locking the session.
+With `tdd-gate` installed, every session starts with a reminder to load the workflow. Then a hook runs before every file edit. If the file is source code and the workflow is not active, the edit is blocked and Claude is told to load it. Docs and config are never blocked. If the hook cannot read its input, it allows the edit instead of locking the session.
 
 In a real session, Claude went straight for the code. The gate stopped it, Claude loaded the workflow, wrote two tests, saw both fail, then fixed the code.
 
-Turn the gate off for one session: `TDD_GATE=off claude`
+With the gate installed, turn it off for one session: `TDD_GATE=off claude`
 
 The gate sees Claude's edit tools. File writes made through shell commands (`sed -i`, `cat > file`) are not gated.
 
@@ -74,14 +84,14 @@ Guides load only when a project needs them, so they cost no context otherwise.
 ## Files
 
 ```text
-.claude-plugin/   plugin and marketplace manifests, icon
-skills/           the workflow (SKILL.md) and its guides
-hooks/            the edit gate
+.claude-plugin/              marketplace manifest
+plugins/test-driven-development/  skill-only plugin, icon, and guides
+plugins/tdd-gate/                optional command hooks
 ```
 
 ## Privacy
 
-Collects nothing, sends nothing. See [PRIVACY.md](PRIVACY.md).
+Neither plugin sends data. The optional gate reads the local session transcript. See [PRIVACY.md](PRIVACY.md).
 
 ## License
 
