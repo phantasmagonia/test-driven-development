@@ -54,11 +54,13 @@ Not checked: nothing outstanding.
 
 Claude may skip a skill. This plugin does not allow that for code.
 
-A hook runs before every file edit. If the file is source code and the workflow is not active, the edit is blocked and Claude is told to load it. Docs and config are never blocked. If the hook cannot read its input, it allows the edit instead of locking the session.
+Every session starts with a reminder to load the workflow. Then a hook runs before every file edit. If the file is source code and the workflow is not active, the edit is blocked and Claude is told to load it. Docs and config are never blocked. If the hook cannot read its input, it allows the edit instead of locking the session.
 
 In a real session, Claude went straight for the code. The gate stopped it, Claude loaded the workflow, wrote two tests, saw both fail, then fixed the code.
 
 Turn the gate off for one session: `TDD_GATE=off claude`
+
+The gate sees Claude's edit tools. File writes made through shell commands (`sed -i`, `cat > file`) are not gated.
 
 ## What it covers
 

@@ -1,6 +1,16 @@
 {
-  "description": "Require the test-driven-development skill before Claude edits source code",
+  "description": "Remind Claude to load the test-driven-development skill, and block source edits until it does",
   "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '%s\\n' 'Before editing source code, load the test-driven-development skill and follow it.'"
+          }
+        ]
+      }
+    ],
     "PreToolUse": [
       {
         "matcher": "Edit|Write|MultiEdit",
