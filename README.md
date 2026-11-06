@@ -31,7 +31,7 @@ To try it locally: `claude --plugin-dir /path/to/this/repo/plugins/test-driven-d
 
 ### Directory submission
 
-Submit `plugins/test-driven-development` as the plugin path, not the repository root. The directory draft has **Auto-publish passing versions** enabled; keep that setting on when editing or resubmitting the listing. This is a developer portal setting, not a repository configuration. The optional `tdd-gate` plugin is outside the submitted path.
+For the public directory, select branch `directory-skill` and plugin path `.`. That branch contains only the skill, its metadata, icon, license, and documentation. The directory scanned files outside a nested plugin path on `main`, so submitting `main` would include the optional command hooks and Python files. Keep **Auto-publish passing versions** enabled in the developer portal; it is a portal setting, not a repository configuration. Copy skill updates from `main` to `directory-skill` before submitting a new version.
 
 ### Install the optional edit-tool gate
 
