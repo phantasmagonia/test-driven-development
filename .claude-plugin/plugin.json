@@ -1,0 +1,16 @@
+{
+  "name": "test-driven-development",
+  "version": "0.1.0",
+  "description": "Strict test-first workflow for Claude Code: failing test first, minimal code, honest report. Any language.",
+  "author": {
+    "name": "phantasmagonia"
+  },
+  "license": "MIT",
+  "keywords": [
+    "tdd",
+    "testing",
+    "test-driven-development",
+    "refactoring",
+    "legacy-code"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "test-driven-development",
+  "description": "Test-first development for Claude Code: proven code, honest reports.",
+  "owner": {
+    "name": "phantasmagonia"
+  },
+  "plugins": [
+    {
+      "name": "test-driven-development",
+      "source": "./",
+      "description": "A strict test-first workflow for Claude Code, with a gate that makes sure it is used before any source code changes.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "category": "development",
+      "keywords": [
+        "tdd",
+        "testing",
+        "refactoring"
+      ]
+    }
+  ]
+}

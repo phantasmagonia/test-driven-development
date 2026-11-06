@@ -1,0 +1,17 @@
+{
+  "description": "Require the test-driven-development skill before Claude edits source code",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/tdd_gate.py\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

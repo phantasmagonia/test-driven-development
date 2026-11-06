@@ -1,0 +1,8 @@
+# Development only, not shipped
+tests/
+evals/
+
+# Generated
+__pycache__/
+*.pyc
+.DS_Store
