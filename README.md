@@ -39,10 +39,6 @@ The full workflow and stack-specific guidance live in [SKILL.md](skills/test-dri
 
 This plugin contains instructions only. It has no hooks or executable code. See [PRIVACY.md](PRIVACY.md).
 
-## For maintainers
-
-The directory submission uses the repository root on `main`. Keep this branch skill-only. **Auto-publish passing versions** is enabled in the developer portal; it is not a repository setting.
-
 ## License
 
 [MIT](LICENSE)
